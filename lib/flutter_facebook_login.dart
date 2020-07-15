@@ -85,7 +85,6 @@ class FacebookLogin {
   Future<FacebookAccessToken> get currentAccessToken async {
     final Map<dynamic, dynamic> accessToken =
         await channel.invokeMethod('getCurrentAccessToken');
-
     if (accessToken == null) {
       return null;
     }
@@ -104,8 +103,7 @@ class FacebookLogin {
   Future<FacebookLoginResult> logIn(
     List<String> permissions,
   ) async {
-    final Map<dynamic, dynamic> result =
-        await channel.invokeMethod('logIn', {
+    final Map<dynamic, dynamic> result = await channel.invokeMethod('logIn', {
       'behavior': _currentLoginBehaviorAsString(),
       'permissions': permissions,
     });
